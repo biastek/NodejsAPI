@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <title>Home | </title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png" />
+
+    <!-- Bootstrap -->
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom style -->
+    <link href="/assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+     <!-- nav -->
+      <%include partials/header%>
+    <!--/.nav -->
+
+    <div class="container main-content list">
+        <div class="row">
+          <a href="/user/add" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> Add new user</a>
+          <form class="form-inline pull-right" action="#" method="GET">
+            <div class="form-group">
+              <input type="text" class="form-control" name="q" placeholder="Type user name..." />
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div>
+        <div class="row">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Edit</th>
+                <th>Delete</th>              
+              </tr>
+            </thead>
+            <tbody>
+                <%if(users.length>0){
+                  for(let user of users){%>
+                    <tr>
+                        <td><%=user.id%></td>
+                        <td><%=user.name%></td>
+                        <td><%=user.email%></td>
+                        <td><%=user.phone%></td>
+                        <td><a href="/user/update/<%=user.id%>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a href="/user/delete/<%=user.id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                      </tr>
+                <%  }
+                }%>
+                
+                               
+              </tbody>
+          </table>          
+        </div>
+    </div><!-- /.container -->
+
+    <!-- footer -->
+    <%include partials/footer%>
+    <!-- /.footer -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/bootstrap/js/jquery.min.js"></script>    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>

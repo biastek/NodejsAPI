@@ -1,0 +1,39 @@
+<%if (success_message != ''||error_message!=''||error!=''||errors != '') { %>
+  <div class="alert alert-dismissable alert-danger">
+          <button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button>
+          <h4> Alert!</h4>       
+          <div >
+              <%if (success_message != '') { %>
+                  <div class="alert alert-success">
+                      <ul>
+                          <li><%= success_message %></li>
+                      </ul>
+                  </div>
+              <% } %>
+              <%if (error_message != '') { %>
+                  <div class="alert alert-danger">
+                      <ul>
+                          <li><%= error_message %></li>
+                      </ul>
+                  </div>
+              <% } %>
+              <%if (error != '') { %>
+                  <div class="alert alert-danger">
+                      <ul>
+                          <li><%= error %></li>
+                      </ul>
+                  </div>
+              <% } %>
+              
+              <%if (errors != '') { %>
+                  <div class="alert alert-danger">
+                  <% for(var i=0; i < errors.length; i++) { %>	
+                      <ul>
+                          <li><%= errors[i].msg %></li>					
+                      </ul>
+                  <%}%>				
+                  </div>
+              <% } %>
+          </div>
+      </div>
+  <%}%>
